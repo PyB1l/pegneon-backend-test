@@ -1,0 +1,16 @@
+.page-header {
+    height: 100% !important;
+}
+
+.page-header {
+    min-height: 100% !important;
+}
+
+.card-register {
+    max-width: 100% !important;
+    min-height: 100% !important;
+}
+
+.register-page .page-header .container {
+    margin-top: 0 !important;
+}

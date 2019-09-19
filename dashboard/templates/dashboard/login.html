@@ -1,0 +1,51 @@
+{% extends 'dashboard/base.html' %}
+{% load static %}
+
+
+{% block title %}
+    {{ block.super }} Challenge Login
+{% endblock %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static '/dashboard/assets/css/pegneon.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-lg-4 ml-auto mr-auto">
+            <div class="card card-register">
+                <h3 class="title mx-auto"><b>Game Challenge</b></h3>
+                <form class="register-form">
+                    <label>Employee Serial Number</label>
+                    <input id="pgUser" type="text" class="form-control" placeholder="Your company serial number">
+                    <button type="submit" id="pgGame" class="btn btn-danger btn-block btn-round">sign in</button>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+
+{% block extra_js %}
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+    <script src="{% static '/dashboard/assets/js/pegneon.js' %}"></script>
+
+    <script>
+        $(window).ready(function() {
+
+            var pegneonSrv = pegneonService('/api/login/', '/api/v1/challenge');
+
+
+            $('#pgGame').click(function(event) {
+
+                event.preventDefault();
+
+                var pgUser = $('#pgUser').val();
+
+                return pegneonSrv.play(pgUser);
+            })
+        })
+
+    </script>
+
+{% endblock %}
